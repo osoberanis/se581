@@ -1,0 +1,29 @@
+@(inventoryForm: Form[Inventory])
+
+@import helper._
+
+@main(Html("Inventory Upload")) {
+    
+   @helper.form(action = routes.Upload.submit(), 'enctype -> "multipart/form-data") {
+   
+   
+    	@if(flash.contains("error")) {
+                <div class="alert-message error">
+                   <b> @flash.get("error")</b>
+                </div>
+        }
+   
+    	@inputText(
+                inventoryForm("name"), 
+                '_label -> "Enter inventory name:"
+            )
+            
+       <label for="inventory">Select your file:</label>
+       <input type="file" name="inventory"/>
+ 		<br>
+ 		<br>
+    	<p class="buttons">
+            <input type="submit" id="submit"  class="btn primary">
+        </p>
+    }
+}
