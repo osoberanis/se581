@@ -25,7 +25,7 @@ public class QueryOperations
 		ObjectMapper mapper = new ObjectMapper();
 		try
         {
-	        jsonFile = mapper.readValue(new File("./conf/inventory.json"), InventoryFile.class);
+	        jsonFile = mapper.readValue(new File("../conf/inventory.json"), InventoryFile.class);
 	        
         }
         catch (JsonParseException e)

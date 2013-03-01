@@ -220,7 +220,7 @@ public class PublishOperations
 	 */
 	public static File createFile()
 	{
-		File file = new File("./conf/inventory.json");
+		File file = new File("../conf/inventory.json");
 		 
 		// if file doesnt exists, then create it
 		if (!file.exists()) 

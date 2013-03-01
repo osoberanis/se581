@@ -8,12 +8,15 @@ import play.mvc.Controller;
 import models.InventoryFile;
 import models.InventoryFile.Inventory;
 
+import memory.MemorySingleton;
+
 public class QueryFactory
 {
 	public static String findItem(String item)
 	{
 		String json = null;
-		InventoryFile inMemoryFile = QueryOperations.retrieveInventoryFile();
+		//InventoryFile inMemoryFile = QueryOperations.retrieveInventoryFile();
+		InventoryFile inMemoryFile = MemorySingleton.getInstance().getInventory();
 		Inventory inventory = QueryOperations.queryItem(inMemoryFile, item);
 		if (inventory != null)
 		{
@@ -57,7 +60,8 @@ public class QueryFactory
 			double value = new Double(query[0]).doubleValue();
 			
 			// Retrieve file and put in memory
-			InventoryFile inMemoryFile = QueryOperations.retrieveInventoryFile();
+			//InventoryFile inMemoryFile = QueryOperations.retrieveInventoryFile();
+			InventoryFile inMemoryFile = MemorySingleton.getInstance().getInventory();
 			ArrayList<Inventory> inventoryArray = QueryOperations.queryItems(inMemoryFile, field, operation, value);
 			
 			if (!inventoryArray.isEmpty())
